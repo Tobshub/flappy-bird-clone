@@ -1,4 +1,4 @@
-export function hasLost(bird, game_area, tubes, holes){
+export function hasLost(bird, game_area, tubes, holes,btn){
 
   let hasLost = false;
 
@@ -6,7 +6,7 @@ export function hasLost(bird, game_area, tubes, holes){
   let birdPos = bird.getBoundingClientRect();
 
   if(birdPos.y > OOB){
-    hasLost = true;
+     hasLost = true;
   }
 
   for(let i = 0; i < tubes.length; i++){
@@ -27,6 +27,10 @@ export function hasLost(bird, game_area, tubes, holes){
       }
 
       
+  }
+
+  if(hasLost){
+    btn.focus();
   }
 
   return hasLost;

@@ -7,42 +7,77 @@
 body {
   height: 100vh;
   width: 100vw;
-  display: grid;
-  place-items: center;
+  padding: 2em;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: center;
   overflow: hidden;
   background-color: #d2d2d2;
 }
 
-.game-area {
-  height: 30vmax;
-  width: 30vmax;
+.minor-area {
+  width: 50%;
+  height: 50%;
+  padding: 1em;
   position: relative;
-  background-color: #fff;
+}
+
+.score {
+  width: fit-content;
+  color: #f33;
+  background-color: #000;
+  font-size: 1.5em;
+  font-family: 'Open sans', 'Times New Roman', Times, serif;
+  padding: .12em .75em ;
+  margin: 1em 0;
+}
+
+#startBtn {
+  padding: .12em .75em;
+  height: 2.5em;
+}
+
+.game-area {
+  height: 100%;
+  width: 50%;
+  position: relative;
   overflow: hidden;
+  background-color: #fff;
+}
+
+.cloud-bg {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 250px;
+  background-image: url('https://media0.giphy.com/media/j4lI50Qjt1YW0ySy6s/giphy.gif');
+}
+
+:root {
+  --animation-speed: 2;
 }
 
 .tube {
-  --play-state: running;
+  --play-state: paused;
   position: absolute;
-  right: -50px;
+  right: -100%;
   background-color: #000;
-  width: 50px;
+  width: 75px;
   height: 100%;
-  animation: slide 4s linear infinite var(--play-state);
+  animation: slide calc(var(--animation-speed) * 1s) linear infinite var(--play-state);
 }
 
 .tube-2 {
-  animation-delay: 1250ms;
+  animation-delay: calc((var(--animation-speed) * 500) * 1ms);
 }
 
-.tube-3 {
-  animation-delay: 2350ms;
-}
 
 .hole {
-  position: relative;
+  position: absolute;
+  left: 0;
   top: 50%; translate: 0 -50%;
-  height: 150px;
+  height: 40%;
   width: 100%;
   background-color: #fff;
 }
@@ -57,23 +92,14 @@ body {
 }
 
 .bird {
-  width: 25px;
+  width: 2em;
   aspect-ratio: 1/1;
-  border-radius: 50%;
+  border-radius: 0 50% 50% 50%;
+  rotate: -10deg;
   position: absolute;
-  top: 20%;
+  top: 35%;
   left: 20%;
-  background-color: #f33;
+  background-color: #f00;
   z-index: 100;
-}
-
-.score {
-  position: absolute;
-  top: 10px;
-  left: 20px;
-  z-index: 1000;
-  color: #f33;
-  background-color: #000;
-  font-size: 1.5em;
-  padding: .1em .5em ;
+  border: 1px solid #00f;
 }
